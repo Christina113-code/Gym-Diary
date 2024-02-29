@@ -7,7 +7,7 @@ class Exercise(db.Model):
     reps = db.Column(db.Integer, unique=False, nullable=False)
     weight = db.Column(db.Integer, unique=False, nullable=False)
     date = db.Column(db.String(80), unique=False, nullable=False)
-    type = db.Column(db.String(80), unique=False, nullable=False)
+    mgroup = db.Column(db.String(80), unique=False, nullable=False)
 
     def to_json(self):
         return{
@@ -17,5 +17,5 @@ class Exercise(db.Model):
             'reps': self.reps,
             'weight': self.weight,
             'date': self.date,
-            'type':self.type
+            'mgroup':self.mgroup
         }

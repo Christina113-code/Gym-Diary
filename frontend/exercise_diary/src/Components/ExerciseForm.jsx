@@ -8,10 +8,9 @@ const ExerciseForm = ({existingExercise={},updateCallback}) => {
     const [reps, setReps] = useState(existingExercise.reps || 1)
     const [weight, setWeight] = useState(existingExercise.weight || 10)
     const [date, setDate] = useState(existingExercise.date ||todays_date)
-    const [type, settype] = useState(existingExercise.type ||'')
+    const [mgroup, setmgroup] = useState(existingExercise.mgroup ||'')
     // If object is not empty we are updating
     const updating = Object.entries(existingExercise).length !==0
-
     
     // Change date formatting later 
 
@@ -22,7 +21,7 @@ const ExerciseForm = ({existingExercise={},updateCallback}) => {
             name,
             sets,
             reps,
-            weight,date,type
+            weight,date,mgroup
         }
         //Add updating later 
         const url = 'http://127.0.0.1:5000/' + (updating? `update_exercise/${existingExercise.id}`: 'create_exercise')
@@ -91,14 +90,18 @@ const ExerciseForm = ({existingExercise={},updateCallback}) => {
             onChange={e=>setDate(e.target.value)}
             />
             <br></br>
-             <Form.Select aria-label='Select Muscle Group'>
+             <Form.Select aria-label='Select Muscle Group' onChange={e => setmgroup(e.target.value)}>
                 <option>Muscle Group</option>
-                <option onChange={e=>settype(e.target.value)}value={'Quads'}>Quads</option>
-                <option onChange={e=>settype(e.target.value)}value={'Glutes'}>Glutes</option>
-                <option onChange={e=>settype(e.target.value)}value={'Chest'}>Chest</option>
-                <option onChange={e=>settype(e.target.value)}value={'Back'}>Back</option>
-                <option onChange={e=>settype(e.target.value)}value={'Arms'}>Arms</option>
-                <option onChange={e=>settype(e.target.value)}value={'Cardio'}>Cardio</option>
+                <option value={'Quads'}>Quads</option>
+                <option onChange={e=>setmgroup(e.target.value)}value={'Glutes'}>Glutes</option>
+                <option onChange={e=>setmgroup(e.target.value)}value={'Chest'}>Chest</option>
+                <option onChange={e=>setmgroup(e.target.value)}value={'Back'}>Back</option>
+                <option onChange={e=>setmgroup(e.target.value)}value={'Triceps'}>Triceps</option>
+                <option onChange={e=>setmgroup(e.target.value)}value={'Biceps'}>Biceps</option>
+                
+                <option onChange={e=>setmgroup(e.target.value)}value={'Cardio'}>Cardio</option>
+
+                
 
 
 

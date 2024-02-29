@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {FaTrashCan} from 'react-icons/fa6'
 import Table from 'react-bootstrap/Table'
-import { Button } from 'react-bootstrap'
+import { Button, Form } from 'react-bootstrap'
 const ExerciseList = ({exercises, updateExercise, updateCallback}) => {
+
+    
 
 
    const onDelete = async (id) =>{
@@ -25,7 +27,11 @@ const ExerciseList = ({exercises, updateExercise, updateCallback}) => {
     }
   return (
     <div>
-        <h2>My Workout Journal</h2>
+       
+        
+
+
+
         <Table striped hover bordered>
             <thead>
                 <tr>
@@ -34,6 +40,7 @@ const ExerciseList = ({exercises, updateExercise, updateCallback}) => {
                     <th>Sets</th>
                     <th>Weight</th>
                     <th>Date</th>
+                    <th>Muscle Group</th>
 
                 </tr>
             </thead>
@@ -45,6 +52,7 @@ const ExerciseList = ({exercises, updateExercise, updateCallback}) => {
                         <td>{exercise.sets}</td>
                         <td>{exercise.weight}</td>
                         <td>{exercise.date}</td>
+                        <td>{exercise.mgroup}</td>
                         <td>
                             <Button onClick={()=>updateExercise(exercise)}>Edit</Button>
                             <span style={{'padding':'.2rem'}}></span>

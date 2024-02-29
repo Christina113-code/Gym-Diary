@@ -17,14 +17,15 @@ def create_exercise():
     reps = request.json.get('reps')
     weight = request.json.get('weight')
     date = request.json.get('date')
+    mgroup = request.json.get('mgroup')
 
-    if not (name or sets or reps or weight or date):
+    if not (name or sets or reps or weight or date or mgroup):
         return(
             jsonify({
                 'message':'Must include all info'
             }),400
         )
-    new_exercise = Exercise(name=name, sets=sets, reps=reps, weight=weight, date=date)
+    new_exercise = Exercise(name=name, sets=sets, reps=reps, weight=weight, date=date, mgroup=mgroup)
     try:
         db.session.add(new_exercise)
         db.session.commit()
@@ -47,6 +48,7 @@ def update_exercise(exercise_id):
     exercise.sets = data.get('sets', exercise.sets)
     exercise.weight = data.get('weight', exercise.weight)
     exercise.date = data.get('date', exercise.date)
+    exercise.mgroup = data.get('mgroup',exercise.mgroup)
 
     db.session.commit()
 
