@@ -20,6 +20,7 @@ function App() {
   const fetchExercises = async () =>{
     const res = await fetch('http://127.0.0.1:5000/exercises')
     const data = await res.json()
+    console.log('fetching')
     setExercises(data.exercises)
     
   }
@@ -45,6 +46,9 @@ function App() {
   }
 
   const filterByMG = (cat) =>{
+    // optimize later idc 
+    // fetchExercises()
+    console.log('filtering')
     setExercises(prevExercises => prevExercises.filter(ex => ex.mgroup == cat))
   }
   // TODO: 
